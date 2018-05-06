@@ -10,7 +10,7 @@ public class Client {
     private boolean isLooking;
     private String occupiedLoc;
     
-    // Constructors
+  
     public Client(String name, char gender, String bio,
     			Facility preference, String commInfo,
     			boolean isLooking, String occupiedLoc) {
