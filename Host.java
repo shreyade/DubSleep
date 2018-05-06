@@ -4,6 +4,9 @@
  * A class to represent the host.
  *
  */
+
+package my.mainui;
+
 public class Host {
 
 	//Fields

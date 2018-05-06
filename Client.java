@@ -1,4 +1,6 @@
 
+package my.mainui;
+
 public class Client {
 
 	// Instance Fields
@@ -10,7 +12,7 @@ public class Client {
     private boolean isLooking;
     private String occupiedLoc;
     
-  
+    // Constructors
     public Client(String name, char gender, String bio,
     			Facility preference, String commInfo,
     			boolean isLooking, String occupiedLoc) {
@@ -27,6 +29,26 @@ public class Client {
     	this.preference = preference;
         this.isLooking = isLooking;
         this.occupiedLoc = occupiedLoc;
+    }
+    
+    public Client(String name, char gender, String bio, String commInfo, boolean isLooking) {
+	this.name = name;
+        this.gender = gender;
+        this.bio = bio;
+        this.commInfo = commInfo;
+        this.isLooking = isLooking;
+        this.occupiedLoc = "";
+        this.preference = new Facility();
+
+    }
+
+    // Default Constructor
+    public Client() {
+        this.name = "";
+        this.gender = 'a';
+        this.bio = "";
+        this.commInfo = "";
+        this.isLooking = false;
     }
     
     // Getters
@@ -86,5 +108,31 @@ public class Client {
     
     public void setOccupiedLoc(String occupiedLoc) {
     	this.occupiedLoc = occupiedLoc;
+    }
+    
+    //To-String for FileIO
+    public String toString() {
+        String boolString = "false";
+        if (isLooking) 
+            boolString = "true";
+        String returnString =  this.name + ","
+    + gender + ","
+    + bio + ","
+    + commInfo + ","
+    + boolString + ","
+    + occupiedLoc + ";"
+    + preference.toString();
+
+        return returnString;
+    }
+    
+    public void deserializeClient(String input) {
+    	String[] clientData = input.split(",");
+        this.name = clientData[0];
+        this.gender = clientData[1].charAt(0);
+        this.bio = clientData[2];
+        this.commInfo = clientData[3];
+        this.isLooking = Boolean.parseBoolean(clientData[4]);
+        this.occupiedLoc = clientData[5];
     }
 }

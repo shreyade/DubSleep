@@ -1,4 +1,7 @@
 
+
+package my.mainui;
+
 public class Location {
 	
 	// Fields
